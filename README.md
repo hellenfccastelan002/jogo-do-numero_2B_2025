@@ -1,1 +1,3 @@
-# jogo-do-numero_2B_2025
+<h1>jogo do numero 2B 2025</h1>
+
+##instruçoes sobre o jogo
