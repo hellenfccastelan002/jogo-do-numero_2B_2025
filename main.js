@@ -5,7 +5,7 @@ const baixoOUAlto = document.querySelector('.baixoOuAlto');
 const envioPalpite = document.querySelector('envioPalpite');
 const campoPalpite = document.querySelector('campoPalpite');
 let contagemPalpites = 1;
-let botaoReininciar;
+let botaoReiniciar;
 
     function verificarPalpite() {
         const palpiteUsuario = Number(campoPalpite.value);
@@ -29,4 +29,41 @@ let botaoReininciar;
         ultimoResultado.style.backgroundColor = "red";
         if (palpiteUsuario < numeroAleatorio) {
             baixoOuAto.textContent
+    } else if (palpiteUsuario > numeroAleatorio) {
+            baixoOuAlto.textContent = "O ultimo palpite foi muito alto";
+        }
     }
+
+        contagemPalpites++;
+        campoPalpite.value = "";
+        campoPalpite.focus();
+    }
+
+envioPalpite.addEventListener('click, verificarPalpite);
+
+function finalizarJogo() {
+    campoPalpite.disabled = true;
+    envioPalpite.disabled = true;
+    botaoReininciar = document.createElement('button');
+    document.body.appendChild(botaoReininciar);
+    botaoReiniciar.textContent = 'Reininciar Jogo';
+    botaoReiniciar.ClassList.add('botaoReiniciar');
+    botaoReiniciar.addEvenListener('click', reiniciarJogo);
+}
+
+function reiniciarJogo() {
+    contagemPalpites = 1;
+    const paragrafoReiniciar = document.querySelectorAll('.paragrafoResultado p');
+    for (const paragrafroReiniciar of paragrafoReiniciar) {
+        paragrafoReiniciar.textcontent = "";
+    }
+
+botaoReiniciar.parentNode.removeChild(botaoReiniciar);
+    campoPalpite.disabled = false;
+    envioPalpite.disabled = false;
+    campoPalpite.value = "";
+    campoPalpite.focus();
+    ultimoResultado.style.backgroundColor = 'white';
+    numeroAleatorio = Math.floor(Math.random() * 100) +1;
+}
+        
